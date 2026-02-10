@@ -41,6 +41,7 @@ fast-deploy init
 This will:
 - Create a `.fastdeploy` configuration file.
 - Add `"publish": "fastdeploy"` to `scripts` in your `package.json`.
+- Create a `.gitignore` (or update existing) with `.fastdeploy*`.
 
 ### 2. Configuration
 

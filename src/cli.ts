@@ -4,15 +4,16 @@ import path from 'path'
 import fs from 'fs'
 import { deploy, DeployOptions } from './index'
 import { logger } from './logger'
+import packageJson from '../package.json'
 
 const program = new Command()
 
-program.name('fast-deploy').description('Deploy to remote server using SFTP').version('1.0.0')
+program.name('fast-deploy').description('Deploy to remote server using SFTP').version(packageJson.version)
 
 // Init command
 program
   .command('init')
-  .description('Initialize configuration and scripts')
+  .description('Initialize configuration, scripts and .gitignore')
   .action(async () => {
     try {
       const configPath = path.resolve(process.cwd(), '.fastdeploy')
@@ -53,6 +54,33 @@ program
         }
       } else {
         logger.warn('package.json not found in the current directory.')
+      }
+
+      const gitignorePath = path.resolve(process.cwd(), '.gitignore')
+      const ignoreEntry = '.fastdeploy*'
+      if (fs.existsSync(gitignorePath)) {
+        try {
+          let gitignoreContent = fs.readFileSync(gitignorePath, 'utf-8')
+          if (!gitignoreContent.includes(ignoreEntry)) {
+            // Add newline if file doesn't end with one
+            if (gitignoreContent && !gitignoreContent.endsWith('\n')) {
+              gitignoreContent += '\n'
+            }
+            fs.appendFileSync(gitignorePath, gitignoreContent.endsWith('\n') ? ignoreEntry + '\n' : '\n' + ignoreEntry + '\n')
+            logger.success('Added ".fastdeploy*" to .gitignore.')
+          } else {
+            logger.info('".fastdeploy*" already exists in .gitignore.')
+          }
+        } catch (e) {
+          logger.error('Failed to update .gitignore:', e)
+        }
+      } else {
+        try {
+          fs.writeFileSync(gitignorePath, ignoreEntry + '\n')
+          logger.success('Created .gitignore with ".fastdeploy*".')
+        } catch (e) {
+          logger.error('Failed to create .gitignore:', e)
+        }
       }
     } catch (error) {
       logger.error('Initialization failed:', error)
