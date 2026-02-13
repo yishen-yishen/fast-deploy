@@ -1,6 +1,6 @@
 {
   "name": "@yishen_/fast-deploy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI tool and library for fast deployment to remote servers using SFTP",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
