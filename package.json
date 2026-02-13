@@ -1,6 +1,6 @@
 {
-  "name": "fast-deploy",
-  "version": "0.0.1",
+  "name": "@yishen_/fast-deploy",
+  "version": "0.0.2",
   "description": "A CLI tool and library for fast deployment to remote servers using SFTP",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,6 +24,15 @@
     "backup",
     "cli"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yishen-yishen/fast-deploy.git"
+  },
+  "homepage": "https://github.com/yishen-yishen/fast-deploy#readme",
+  "bugs": {
+    "url": "https://github.com/yishen-yishen/fast-deploy/issues"
+  },
+  "license": "MIT",
   "author": "yishen@mdashen.com",
   "dependencies": {
     "commander": "^14.0.3",

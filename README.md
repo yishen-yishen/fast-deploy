@@ -14,18 +14,18 @@ A simple and fast deployment tool for Node.js, based on `ssh2-sftp-client`.
 
 ### For use as a library:
 ```bash
-npm install fast-deploy
+npm install @yishen_/fast-deploy
 ```
 
 ### For use as a CLI tool:
 Global installation:
 ```bash
-npm install -g fast-deploy
+npm install -g @yishen_/fast-deploy
 ```
 
 Or run with npx:
 ```bash
-npx fast-deploy
+npx @yishen_/fast-deploy
 ```
 
 ## CLI Usage
