@@ -90,7 +90,7 @@ export async function deploy(options: DeployOptions): Promise<void> {
     }
 
     // Upload
-    logger.info(`Uploading ${resolvedLocalPath} to ${remotePath}...`);
+    logger.info(`Uploading ${resolvedLocalPath} to ${server.host}:${remotePath}...`);
     
     await sftp.uploadDir(resolvedLocalPath, remotePath);
     logger.success('deploy completed successfully.');
