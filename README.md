@@ -101,9 +101,9 @@ fast-deploy --config ./custom-config.json
 ## Library Usage
 
 ```javascript
-const { deploy } = require('fast-deploy');
+const { deploy } = require('@yishen_/fast-deploy');
 // or
-import { deploy } from 'fast-deploy';
+import { deploy } from '@yishen_/fast-deploy';
 
 deploy({
   localPath: 'dist', // local directory to upload, default is 'dist'
